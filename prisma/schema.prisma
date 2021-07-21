@@ -9,3 +9,88 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Company {
+  id       String  @id @default(uuid())
+  name     String
+  url      String?
+  linkedin String?
+  jobs     Job[]
+}
+
+model Job {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  startDate   DateTime?
+  endDate     DateTime?
+  company     Company   @relation(fields: [companyId], references: [id])
+  companyId   String
+  projects    Project[]
+}
+
+model Project {
+  id          String     @id @default(uuid())
+  name        String
+  description String
+  startDate   DateTime?
+  endDate     DateTime?
+  url         String
+  github      String
+  picture     String?
+  job         Job?       @relation(fields: [jobId], references: [id])
+  jobId       String?
+  stacks      Stack[]
+  formation   Formation? @relation(fields: [formationId], references: [id])
+  formationId String?
+  pictures    Pictures[]
+}
+
+model Stack {
+  id       String     @id @default(uuid())
+  name     String
+  url      String?
+  github   String?
+  projects Project[]
+  pictures Pictures[]
+}
+
+model Formation {
+  id          String     @id @default(uuid())
+  name        String
+  description String
+  startDate   DateTime?
+  endDate     DateTime?
+  schoolName  String
+  country     String
+  level       String
+  projects    Project[]
+  pictures    Pictures[]
+}
+
+model Content {
+  id          String @id @default(uuid())
+  name        String
+  description String
+
+}
+
+model Info {
+  id          String @id @default(uuid())
+  name        String
+  description String
+
+}
+
+model Pictures {
+  id          String     @id @default(uuid())
+  url         String
+  description String
+  project     Project?   @relation(fields: [projectId], references: [id])
+  projectId   String?
+  stack       Stack?     @relation(fields: [stackId], references: [id])
+  stackId     String?
+  formation   Formation? @relation(fields: [formationId], references: [id])
+  formationId String?
+
+}
