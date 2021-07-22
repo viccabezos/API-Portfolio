@@ -10,5 +10,6 @@ router.get('/', (req, res) => {
 
 router.use('/companies', require('./company/routes'));
 router.use('/formations', require('./formation/routes'));
+router.use('/jobs', require('./job/routes'));
 
 module.exports = router;
