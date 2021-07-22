@@ -12,5 +12,6 @@ router.use('/companies', require('./company/routes'));
 router.use('/formations', require('./formation/routes'));
 router.use('/jobs', require('./job/routes'));
 router.use('/projects', require('./project/routes'));
+router.use('/stacks', require('./stack/routes'));
 
 module.exports = router;
