@@ -9,5 +9,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/companies', require('./company/routes'));
+router.use('/formations', require('./formation/routes'));
 
 module.exports = router;
