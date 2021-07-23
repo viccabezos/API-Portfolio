@@ -9,5 +9,6 @@ router.get('/:id', controller.getOne);
 router.get('/', controller.post);
 router.get('/:id/stacks', controller.getStacks);
 router.get('/:id/images', controller.getPictures);
+router.get('/:id/formations', controller.getFormation);
 
 module.exports = router;
